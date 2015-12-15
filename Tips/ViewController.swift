@@ -13,12 +13,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
+    @IBOutlet weak var splittingControl: SplittingControl!
+    @IBOutlet weak var ratioLabel: UILabel!
 
+    var numberOfPeople: Double!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,8 +40,13 @@ class ViewController: UIViewController {
         let tip = billAmount * percentage
         let total = billAmount + tip
         
+        let numberOfPeople = Double(splittingControl.numberOfPeople)
+        let ratio = total / numberOfPeople
+        
+        
         tipLabel.text = String(format: "$%.2f", arguments: [tip])
         totalLabel.text = String(format: "$%.2f", arguments: [total])
+        ratioLabel.text = String(format: "$%.2f", arguments: [ratio])
         
     }
     

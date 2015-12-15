@@ -13,6 +13,8 @@
 		75F929A31C1FB96800FBA68A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F929A21C1FB96800FBA68A /* Assets.xcassets */; };
 		75F929A61C1FB96800FBA68A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F929A41C1FB96800FBA68A /* LaunchScreen.storyboard */; };
 		75F929B11C1FB96800FBA68A /* TipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F929B01C1FB96800FBA68A /* TipsTests.swift */; };
+		75F929BC1C1FCFD000FBA68A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F929BB1C1FCFD000FBA68A /* SettingsViewController.swift */; };
+		75F929BE1C1FD59100FBA68A /* SplittingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F929BD1C1FD59100FBA68A /* SplittingControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		75F929AC1C1FB96800FBA68A /* TipsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F929B01C1FB96800FBA68A /* TipsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTests.swift; sourceTree = "<group>"; };
 		75F929B21C1FB96800FBA68A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75F929BB1C1FCFD000FBA68A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		75F929BD1C1FD59100FBA68A /* SplittingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplittingControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 				75F9299B1C1FB96800FBA68A /* AppDelegate.swift */,
 				75F9299D1C1FB96800FBA68A /* ViewController.swift */,
 				75F9299F1C1FB96800FBA68A /* Main.storyboard */,
+				75F929BB1C1FCFD000FBA68A /* SettingsViewController.swift */,
+				75F929BD1C1FD59100FBA68A /* SplittingControl.swift */,
 				75F929A21C1FB96800FBA68A /* Assets.xcassets */,
 				75F929A41C1FB96800FBA68A /* LaunchScreen.storyboard */,
 				75F929A71C1FB96800FBA68A /* Info.plist */,
@@ -199,8 +205,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75F929BE1C1FD59100FBA68A /* SplittingControl.swift in Sources */,
 				75F9299E1C1FB96800FBA68A /* ViewController.swift in Sources */,
 				75F9299C1C1FB96800FBA68A /* AppDelegate.swift in Sources */,
+				75F929BC1C1FCFD000FBA68A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
