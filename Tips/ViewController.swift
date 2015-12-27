@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var ratioLabel: UILabel!
+    @IBOutlet weak var bottomView: UIView!
 
     var numberOfPeople: Double!
     
@@ -22,6 +23,8 @@ class ViewController: UIViewController {
         
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        
+        billField.becomeFirstResponder()
         
     }
 
@@ -40,9 +43,14 @@ class ViewController: UIViewController {
         
         tipLabel.text = String(format: "$%.2f", arguments: [tip])
         totalLabel.text = String(format: "$%.2f", arguments: [total])
-    }
-    @IBAction func onTap(sender: AnyObject) {
-        view.endEditing(true)
+        
+        if billField.text!.isEmpty {
+            bottomView.hidden = true
+            tipControl.hidden = true
+        } else {
+            bottomView.hidden = false
+            tipControl.hidden = false
+        }
     }
     
 }
