@@ -9,6 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    @IBOutlet weak var tipControl: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +22,17 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewWillAppear(animated: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let selectedIndex = defaults.integerForKey("default_tip_percentage")
+        tipControl.selectedSegmentIndex = selectedIndex
+    }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        // Get the new view controller using segue.destinationViewController.
-//        // Pass the selected object to the new view controller.
-//        
-//    }
+    override func viewWillDisappear(animated: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let index = tipControl.selectedSegmentIndex
+        defaults.setInteger(index, forKey: "default_tip_percentage")
+        defaults.synchronize()
+    }
 
 }

@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var ratioLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
-
-    var numberOfPeople: Double!
+    
+    var selectedIndex:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +27,27 @@ class ViewController: UIViewController {
         billField.becomeFirstResponder()
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        selectedIndex = defaults.integerForKey("default_tip_percentage")
+        tipControl.selectedSegmentIndex = selectedIndex
+        calculateTip()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let index = tipControl.selectedSegmentIndex
+        defaults.setInteger(index, forKey: "default_tip_percentage")
+        defaults.synchronize()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func onEditingChanged(sender: AnyObject) {
+    
+    func calculateTip() {
         let tipPercentages = [0.18, 0.2, 0.22]
         let percentage = tipPercentages[tipControl.selectedSegmentIndex]
         
@@ -43,6 +57,10 @@ class ViewController: UIViewController {
         
         tipLabel.text = String(format: "$%.2f", arguments: [tip])
         totalLabel.text = String(format: "$%.2f", arguments: [total])
+    }
+
+    @IBAction func onEditingChanged(sender: AnyObject) {
+        calculateTip()
         
         if billField.text!.isEmpty {
             bottomView.hidden = true
