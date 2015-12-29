@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let defaults = NSUserDefaults.standardUserDefaults()
         selectedIndex = defaults.integerForKey("default_tip_percentage")
         tipControl.selectedSegmentIndex = selectedIndex
@@ -36,6 +37,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         let defaults = NSUserDefaults.standardUserDefaults()
         let index = tipControl.selectedSegmentIndex
         defaults.setInteger(index, forKey: "default_tip_percentage")
@@ -55,19 +57,25 @@ class ViewController: UIViewController {
         let tip = billAmount * percentage
         let total = billAmount + tip
         
-        tipLabel.text = String(format: "$%.2f", arguments: [tip])
-        totalLabel.text = String(format: "$%.2f", arguments: [total])
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.maximumFractionDigits = 2;
+        
+        tipLabel.text = formatter.stringFromNumber(tip)
+        totalLabel.text = formatter.stringFromNumber(total)
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
         calculateTip()
         
         if billField.text!.isEmpty {
-            bottomView.hidden = true
-            tipControl.hidden = true
+            self.bottomView.hidden = true
+            self.tipControl.hidden = true
+            
         } else {
-            bottomView.hidden = false
-            tipControl.hidden = false
+            self.bottomView.hidden = false
+            self.tipControl.hidden = false
+            
         }
     }
     

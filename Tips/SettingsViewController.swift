@@ -23,12 +23,14 @@ class SettingsViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         let defaults = NSUserDefaults.standardUserDefaults()
         let selectedIndex = defaults.integerForKey("default_tip_percentage")
         tipControl.selectedSegmentIndex = selectedIndex
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         let defaults = NSUserDefaults.standardUserDefaults()
         let index = tipControl.selectedSegmentIndex
         defaults.setInteger(index, forKey: "default_tip_percentage")
